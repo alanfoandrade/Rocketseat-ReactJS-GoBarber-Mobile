@@ -1,7 +1,7 @@
 import { Alert } from 'react-native';
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 
-import { signInSuccess, signFailure } from './actions';
+import { signInSuccess, signUpSuccess, signFailure } from './actions';
 
 import api from '~/services/api';
 
@@ -30,7 +30,12 @@ export function* signIn({ payload }) {
 
     // history.push('/dashboard');
   } catch (err) {
-    Alert.alert('Falha na autenticação', 'Verifique os dados, tente novamente');
+    Alert.alert(
+      'Falha na autenticação',
+      err.response.data.message
+        ? err.response.data.message
+        : 'Verifique os dados, tente novamente'
+    );
 
     yield put(signFailure());
   }
@@ -44,12 +49,17 @@ export function* signUp({ payload }) {
       name,
       email,
       password,
-      provider: true,
     });
 
+    yield put(signUpSuccess());
     // history.push('/');
   } catch (err) {
-    Alert.alert('Falha no cadastro', 'Verifique seus dados, tente novamente');
+    Alert.alert(
+      'Falha no cadastro',
+      err.response.data.message
+        ? err.response.data.message
+        : 'Verifique seus dados, tente novamente'
+    );
 
     yield put(signFailure());
   }
