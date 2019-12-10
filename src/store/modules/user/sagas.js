@@ -24,7 +24,7 @@ export function* updateProfile({ payload }) {
   } catch (err) {
     Alert.alert(
       'Falha na atualização',
-      err.response.data.message
+      err.response
         ? err.response.data.message
         : 'Verifique os dados, tente novamente'
     );
