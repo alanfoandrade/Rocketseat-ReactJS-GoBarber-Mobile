@@ -129,7 +129,6 @@ export default function Profile() {
 Profile.navigationOptions = {
   tabBarLabel: 'Meu perfil',
   tabBarIcon: ({ tintColor }) => (
-    console.tron.log(tintColor),
-    (<Icon name="person" size={20} color={tintColor} />)
+    <Icon name="person" size={20} color={tintColor} />
   ),
 };
