@@ -15,7 +15,6 @@ export default function DateInput({ date, onChange }) {
   async function handleOpenPicker() {
     const { action, year, month, day } = await DatePickerAndroid.open({
       mode: 'spinner',
-      minDate: new Date(),
       date,
     });
 
