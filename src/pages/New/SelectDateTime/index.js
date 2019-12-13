@@ -14,8 +14,6 @@ import { Container, HourList, Hour, Title } from './styles';
 export default function SelectDateTime({ navigation }) {
   const [date, setDate] = useState(new Date());
 
-  console.tron.log(new Date());
-  console.tron.log(date);
   const [hours, setHours] = useState([]);
 
   const provider = navigation.getParam('provider');
