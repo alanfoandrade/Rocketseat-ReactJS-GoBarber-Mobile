@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
-import pt from 'date-fns/locale/pt';
 import { TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '../../../services/api';
@@ -72,3 +71,10 @@ SelectDateTime.navigationOptions = ({ navigation }) => ({
     </TouchableOpacity>
   ),
 });
+
+SelectDateTime.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+    getParam: PropTypes.func,
+  }).isRequired,
+};

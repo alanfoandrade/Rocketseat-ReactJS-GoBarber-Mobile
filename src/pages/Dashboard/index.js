@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { withNavigationFocus } from 'react-navigation';
+import PropTypes from 'prop-types';
 import api from '../../services/api';
 
 import Background from '../../components/Background';
@@ -55,11 +56,21 @@ function Dashboard({ isFocused }) {
   );
 }
 
+const tabBarIcon = ({ tintColor }) => (
+  <Icon name="event" size={20} color={tintColor} />
+);
+
+tabBarIcon.propTypes = {
+  tintColor: PropTypes.string.isRequired,
+};
+
 Dashboard.navigationOptions = {
   tabBarLabel: 'Agendamentos',
-  tabBarIcon: ({ tintColor }) => (
-    <Icon name="event" size={20} color={tintColor} />
-  ),
+  tabBarIcon,
+};
+
+Dashboard.propTypes = {
+  isFocused: PropTypes.bool.isRequired,
 };
 
 export default withNavigationFocus(Dashboard);

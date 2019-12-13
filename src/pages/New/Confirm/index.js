@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { formatRelative, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '../../../services/api';
@@ -63,3 +64,10 @@ Confirm.navigationOptions = ({ navigation }) => ({
     </TouchableOpacity>
   ),
 });
+
+Confirm.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+    getParam: PropTypes.func,
+  }).isRequired,
+};
